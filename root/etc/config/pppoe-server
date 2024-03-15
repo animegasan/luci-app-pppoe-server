@@ -1,9 +1,0 @@
-
-config service
-	option client_interface 'br-lan'
-	option localip '10.0.1.1'
-	option remoteip '10.0.1.100-254'
-	option count '50'
-	option dns1 '10.0.1.1'
-	option dns2 '192.168.0.2'
-	option enabled '0'
