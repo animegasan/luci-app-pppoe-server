@@ -101,6 +101,7 @@ jobs:
         id: compile
         run: |
           cd sdk
+          chmod +x package/luci-app-pppoe-server/root/etc/init.d/pppoe-server
           echo "make package/luci-app-pppoe-server/{clean,compile} -j$(nproc)"
           make package/luci-app-pppoe-server/{clean,compile} -j$(nproc)
           mv bin/packages/x86_64/base/ ../
