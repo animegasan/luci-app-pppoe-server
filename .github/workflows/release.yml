@@ -82,6 +82,7 @@ jobs:
           echo "src-git-full luci https://git.openwrt.org/project/luci.git;openwrt-23.05" >> feeds.conf
           echo "src-git-full routing https://git.openwrt.org/feed/routing.git;openwrt-23.05"  >> feeds.conf
           git clone -b master https://github.com/${{ github.repository }}.git package/downloads/luci-app-pppoe-server
+          chmod +x package/downloads/luci-app-pppoe-server/root/etc/init.d/pppoe-server
           ./scripts/feeds update -a
           echo "CONFIG_PACKAGE_luci-app-pppoe-server=m" > .config
           ./scripts/feeds install -d n luci-app-pppoe-server
@@ -101,7 +102,6 @@ jobs:
         id: compile
         run: |
           cd sdk
-          chmod +x package/luci-app-pppoe-server/root/etc/init.d/pppoe-server
           echo "make package/luci-app-pppoe-server/{clean,compile} -j$(nproc)"
           make package/luci-app-pppoe-server/{clean,compile} -j$(nproc)
           mv bin/packages/x86_64/base/ ../
